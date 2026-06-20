@@ -69,7 +69,7 @@ function render() {
       return `<tr><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol">${escapeHtml(b.volume)}</td><td class="issues">${escapeHtml(b.issues)}</td></tr>`;
     }).join('');
   }
-  countEl.textContent = `${list.length} of ${books.length} books`;
+  countEl.textContent = `Displaying ${list.length} of ${books.length} books`;
 }
 
 function escapeHtml(s) {

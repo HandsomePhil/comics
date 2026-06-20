@@ -7,17 +7,9 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <div class="header-row">
-    <h1>Phil's TPB Collection</h1>
-    <div id="count"></div>
-  </div>
-  <div class="search-wrapper">
-    <input id="search" type="search" placeholder="Search the collection" autofocus>
-    <button id="clear-search" type="button" aria-label="Clear search">×</button>
-  </div>
-</header>
 <main>
+  <h1>Phil's TPB Collection</h1>
+  <div id="count"></div>
   <table>
     <thead>
       <tr>
@@ -29,6 +21,12 @@
     <tbody id="tbody"></tbody>
   </table>
 </main>
+<footer class="search-footer">
+  <div class="search-wrapper">
+    <input id="search" type="search" placeholder="Search the collection" autofocus>
+    <button id="clear-search" type="button" aria-label="Clear search">×</button>
+  </div>
+</footer>
 <div id="modal" class="modal" hidden>
   <img id="modal-img" alt="">
 </div>
