@@ -1,0 +1,158 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: #2a2a2a;
+  padding: 20px;
+  /* border-bottom: 2px solid #444; */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+.header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #f5f5f5;
+}
+
+#search {
+  width: 100%;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 100px;
+  background-color: #1a1a1a;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1.1rem 1.1rem;
+  color: #e0e0e0;
+  outline: none;
+}
+#search::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+#search:focus { 
+  border-color: #777777;
+}
+
+#count {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+main { 
+  padding: 20px 20px 20px 20px; 
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #242424;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background: #2f2f2f;
+  /* background-color: #1a1a1a; */
+  color: #f5f5f5;
+  font-weight: 600;
+  user-select: none;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+th.sortable { cursor: pointer; }
+th.sortable:hover { background: #383838; }
+th .arrow { color: #f5f5f5; margin-left: 0.4rem; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #2c2c2c; }
+.title-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.thumb {
+  width: 40px;
+  height: 60px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 3px;
+  background: #1a1a1a;
+}
+.thumb-placeholder { background: #3a3a3a; }
+.title-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+
+.title-text h2 {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+}
+
+.title-text h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+
+td.vol, th.vol {
+  text-align: center;
+  /* color: #aaa;  */
+  width: 80px;
+  padding-left: 20px;
+  padding-right: 20px; }
+
+td.issues { color: #aaa; }
+th.issues, td.issues { width: 40%; }
+td.pub { color: #aaa; width: 180px; }
+.empty { text-align: center; padding: 2rem; color: #777; }
+.thumb-clickable { cursor: zoom-in; transition: transform 0.1s; }
+.thumb-clickable:hover { transform: scale(1.05); }
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: zoom-out;
+  padding: 2rem;
+}
+.modal[hidden] { display: none; }
+.modal img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
