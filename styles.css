@@ -156,3 +156,16 @@ td.pub { color: #aaa; width: 180px; }
   border-radius: 4px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
+
+@media (max-width: 700px) {
+  header { padding: 12px; }
+  h1 { font-size: 1.15rem; }
+  main { padding: 12px; }
+  th, td { padding: 0.5rem 0.5rem; }
+  td.vol, th.vol { width: 44px; padding-left: 6px; padding-right: 6px; }
+  th.issues, td.issues { display: none; }
+  .title-cell { gap: 0.6rem; }
+  .thumb { width: 36px; height: 54px; }
+  .title-text h2 { font-size: 0.65rem; }
+  .title-text h3 { font-size: 0.9rem; }
+}
