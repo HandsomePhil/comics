@@ -141,8 +141,13 @@ tr:hover td { background: #2c2c2c; }
   color: #888;
 }
 
-.title-text h2[data-publisher="marvel"] { color: #ED1D24; }
-.title-text h2[data-publisher="wildstorm"] { color: #675CAF; }
+.title-text h2[data-publisher="marvel"] { color: #ED1D24; opacity: 0.8; }
+.title-text h2[data-publisher="wildstorm"] { color: #675CAF; opacity: 0.8;}
+/* .title-text h2[data-publisher="dc"] { color: #0078F0; }
+.title-text h2[data-publisher="dark-horse"] { color: #000; }
+.title-text h2[data-publisher="image"] { color: #1A1A1A; }
+.title-text h2[data-publisher="vertigo"] { color: #...; }
+.title-text h2[data-publisher="cliffhanger-dc"] { color: #...; } "Cliffhanger / DC" */
 
 .title-text h3 {
   margin: 0;
