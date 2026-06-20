@@ -160,9 +160,10 @@ td.pub { color: #aaa; width: 180px; }
 @media (max-width: 700px) {
   header { padding: 12px; }
   h1 { font-size: 1.15rem; }
-  main { padding: 12px; }
+  main { padding: 12px 0; }
+  table { border-radius: 0; }
   th, td { padding: 0.5rem 0.5rem; }
-  td.vol, th.vol { width: 44px; padding-left: 6px; padding-right: 6px; }
+  td.vol, th.vol { width: 70px; padding-left: 8px; padding-right: 8px; }
   th.issues, td.issues { display: none; }
   .title-cell { gap: 0.6rem; }
   .thumb { width: 36px; height: 54px; }
