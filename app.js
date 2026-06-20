@@ -91,7 +91,18 @@ document.querySelectorAll('th[data-sort]').forEach(th => {
   });
 });
 
-search.addEventListener('input', render);
+const searchWrapper = document.querySelector('.search-wrapper');
+const clearBtn = document.getElementById('clear-search');
+function updateClearVisibility() {
+  searchWrapper.classList.toggle('has-text', search.value.length > 0);
+}
+search.addEventListener('input', () => { updateClearVisibility(); render(); });
+clearBtn.addEventListener('click', () => {
+  search.value = '';
+  updateClearVisibility();
+  search.focus();
+  render();
+});
 
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');

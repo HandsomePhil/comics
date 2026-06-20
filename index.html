@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Comic Collection</title>
+<title>Phil's TPB Comic Collection</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +12,10 @@
     <h1>Phil's TPB Collection</h1>
     <div id="count"></div>
   </div>
-  <input id="search" type="search" placeholder="Search by title, volume, or publisher..." autofocus>
+  <div class="search-wrapper">
+    <input id="search" type="search" placeholder="Search the collection" autofocus>
+    <button id="clear-search" type="button" aria-label="Clear search">×</button>
+  </div>
 </header>
 <main>
   <table>
