@@ -141,6 +141,9 @@ tr:hover td { background: #2c2c2c; }
   color: #888;
 }
 
+.title-text h2[data-publisher="marvel"] { color: #ED1D24; }
+.title-text h2[data-publisher="wildstorm"] { color: #675CAF; }
+
 .title-text h3 {
   margin: 0;
   font-size: 1rem;

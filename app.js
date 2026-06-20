@@ -65,7 +65,8 @@ function render() {
       const thumb = b.image
         ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="" data-full="${escapeHtml(b.image)}">`
         : `<div class="thumb thumb-placeholder"></div>`;
-      return `<tr><td><div class="title-cell">${thumb}<div class="title-text"><h2>${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol">${escapeHtml(b.volume)}</td><td class="issues">${escapeHtml(b.issues)}</td></tr>`;
+      const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      return `<tr><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol">${escapeHtml(b.volume)}</td><td class="issues">${escapeHtml(b.issues)}</td></tr>`;
     }).join('');
   }
   countEl.textContent = `${list.length} of ${books.length} books`;
