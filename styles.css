@@ -4,21 +4,25 @@ html { background: #2a2a2a; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
-  padding: 0 0 80px 0;
+  padding: 0;
   background: #1a1a1a;
   color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .search-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background: #2a2a2a;
   padding: 16px 20px;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
   z-index: 10;
+  order: -1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  position: sticky;
+  top: 0;
 }
+
+main { order: 0; }
 
 h1 {
   margin: 0 0 0.25rem 0;
@@ -186,9 +190,15 @@ td.pub { color: #aaa; width: 180px; }
 
 @media (max-width: 700px) {
   html, body { height: 100%; height: 100dvh; }
-  body { display: flex; flex-direction: column; padding-bottom: 0; }
-  main { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-  .search-footer { position: static; flex-shrink: 0; }
+  body { min-height: 0; }
+  main { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; order: 0; }
+  .search-footer {
+    position: static;
+    top: auto;
+    order: 1;
+    flex-shrink: 0;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
+  }
 
   header { padding: 12px; }
   h1 { font-size: 1.15rem; text-align: center; }
