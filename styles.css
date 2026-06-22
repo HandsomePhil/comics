@@ -163,8 +163,8 @@ tr:hover td {
 .title-text h3 {
   margin: 0;
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 400;
   color: #f5f5f5;
 }
 
@@ -259,5 +259,5 @@ td.pub { color: #9ba8c7; width: 180px; }
   .title-cell { gap: 0.6rem; }
   .thumb { width: 36px; height: 54px; }
   .title-text h2 { font-size: 0.65rem; }
-  .title-text h3 { font-size: 1rem; }
+  .title-text h3 { font-size: 1.1rem; font-weight: 400; }
 }
