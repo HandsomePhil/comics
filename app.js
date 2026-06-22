@@ -75,7 +75,7 @@ function render() {
         ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="" data-full="${escapeHtml(b.image)}">`
         : `<div class="thumb thumb-placeholder"></div>`;
       const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      return `<tr><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol">${escapeHtml(b.volume)}</td><td class="issues">${escapeHtml(b.issues)}</td></tr>`;
+      return `<tr><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="issues">${escapeHtml(b.issues)}</td><td class="vol"><span class="vol-badge">${escapeHtml(b.volume)}</span></td></tr>`;
     }).join('');
   }
   countEl.textContent = `Displaying ${pageItems.length} of ${books.length} books`;
