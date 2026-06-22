@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Phil's TPB Comic Collection</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700&family=Roboto:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
+<h1 class="title-desktop">Phil's TPB Collection</h1>
 <main>
-  <h1>Phil's TPB Collection</h1>
-  <div id="count"></div>
+  <h1 class="title-mobile">Phil's TPB Collection</h1>
   <table>
     <thead>
       <tr>
@@ -20,6 +23,8 @@
     </thead>
     <tbody id="tbody"></tbody>
   </table>
+  <nav id="pagination" class="pagination" hidden></nav>
+  <div id="count"></div>
 </main>
 <footer class="search-footer">
   <div class="search-wrapper">
@@ -30,6 +35,6 @@
 <div id="modal" class="modal" hidden>
   <img id="modal-img" alt="">
 </div>
-<script src="app.js" defer></script>
+<script src="app.js?v=6" defer></script>
 </body>
 </html>
