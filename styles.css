@@ -78,17 +78,17 @@ h1 {
 }
 
 #count {
-  font-size: 0.85rem;
-  /* color: #9ba8c7; */
-  color: #859fda;
+  color: #9ba8c7;
+  /* color: #859fda; */
   margin-top: 1rem;
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 400;
   user-select: none;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  /* letter-spacing: 0.05em; */
+  /* visibility: hidden; */
 }
 
 main { 
@@ -99,7 +99,6 @@ table {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
-  /* background: #242424; */
   background: #111E34;
   border-radius: 6px;
   overflow: hidden;
@@ -108,7 +107,6 @@ table {
 th, td {
   padding: 12px;
   text-align: left;
-  border-bottom: 1px solid #393e54;
 }
 
 th {
@@ -120,6 +118,15 @@ th {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
+td {
+  border-bottom: 2px solid #080f1f;
+}
+
+/* tr:first-child { 
+  background: red;
+  border-radius: 60px;
+} */
 
 th.sortable { cursor: pointer; white-space: nowrap; }
 th.sortable:hover { 
