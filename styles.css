@@ -273,8 +273,8 @@ td.pub { color: #9ba8c7; width: 180px; }
   .search-footer {
     order: 2;
     flex-shrink: 0;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
-    background: red;
+    box-shadow: 0 -10px 10px rgba(8,16,32,0.5);
+    background: #080f1f;
   }
 
   header { padding: 12px; }
