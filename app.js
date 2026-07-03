@@ -100,8 +100,8 @@ function render() {
         ? `<img class="thumb" src="${escapeHtml(b.image)}" alt="">`
         : `<div class="thumb thumb-placeholder"></div>`;
       const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      return `<tr class="book-row"><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol"><span class="vol-badge">${escapeHtml(b.volume)}</span></td></tr>` +
-        `<tr class="detail-row"><td colspan="2"><div class="detail-inner"><div class="detail-content">${detailSections(b)}</div></div></td></tr>`;
+      return `<tr class="book-row"><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol">${b.volume ? `<span class="vol-badge">${escapeHtml(b.volume)}</span>` : ''}</td></tr>` +
+        `<tr class="detail-row"><td colspan="2"><div class="detail-inner"><div class="detail-content${b.image ? ' has-cover' : ''}"${b.image ? ` style="--cover: url('${escapeHtml(b.image)}')"` : ''}>${detailSections(b)}</div></div></td></tr>`;
     }).join('');
   }
   countEl.textContent = `Displaying ${pageItems.length} of ${books.length} books`;
