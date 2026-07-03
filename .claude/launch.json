@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "comics",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8000"],
-      "port": 8000
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "8013"],
+      "port": 8013
     }
   ]
 }

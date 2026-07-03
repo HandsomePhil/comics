@@ -20,7 +20,7 @@ function parseCSV(text) {
 }
 
 let books = [];
-let sortKey = null;       // null | 'title' | 'volume' | 'issues'
+let sortKey = null;       // null | 'title' | 'volume'
 let sortDir = 'asc';      // 'asc' | 'desc'
 let currentPage = 1;
 const PAGE_SIZE = 25;
@@ -41,6 +41,29 @@ function compareValues(a, b, key) {
   return a.localeCompare(b);
 }
 
+function creditButtons(names) {
+  return names.map(n =>
+    `<button type="button" class="credit-link" data-credit="${escapeHtml(n)}">${escapeHtml(n)}</button>`
+  ).join('');
+}
+
+function detailSections(b) {
+  const sections = [];
+  if (b.issues) {
+    sections.push(`<div class="detail-section"><span class="detail-label">Collects</span><span class="detail-value">${escapeHtml(b.issues)}</span></div>`);
+  }
+  if (b.authors.length) {
+    sections.push(`<div class="detail-section"><span class="detail-label">Author</span><span class="credit-list">${creditButtons(b.authors)}</span></div>`);
+  }
+  if (b.artists.length) {
+    sections.push(`<div class="detail-section"><span class="detail-label">Artist</span><span class="credit-list">${creditButtons(b.artists)}</span></div>`);
+  }
+  if (!sections.length) {
+    sections.push('<div class="detail-section"><span class="detail-value detail-empty">No details for this volume yet.</span></div>');
+  }
+  return sections.join('');
+}
+
 function render() {
   const q = search.value.trim().toLowerCase();
   let list = books;
@@ -49,7 +72,9 @@ function render() {
       b.title.toLowerCase().includes(q) ||
       b.volume.toLowerCase().includes(q) ||
       b.issues.toLowerCase().includes(q) ||
-      b.publisher.toLowerCase().includes(q)
+      b.publisher.toLowerCase().includes(q) ||
+      b.authors.some(n => n.toLowerCase().includes(q)) ||
+      b.artists.some(n => n.toLowerCase().includes(q))
     );
   }
   if (sortKey) {
@@ -68,14 +93,15 @@ function render() {
   const pageItems = list.slice(start, start + PAGE_SIZE);
 
   if (list.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="3" class="empty">No matches.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="2" class="empty">No matches.</td></tr>';
   } else {
     tbody.innerHTML = pageItems.map(b => {
       const thumb = b.image
-        ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="" data-full="${escapeHtml(b.image)}">`
+        ? `<img class="thumb" src="${escapeHtml(b.image)}" alt="">`
         : `<div class="thumb thumb-placeholder"></div>`;
       const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      return `<tr><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="issues">${escapeHtml(b.issues)}</td><td class="vol"><span class="vol-badge">${escapeHtml(b.volume)}</span></td></tr>`;
+      return `<tr class="book-row"><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol"><span class="vol-badge">${escapeHtml(b.volume)}</span></td></tr>` +
+        `<tr class="detail-row"><td colspan="2"><div class="detail-inner"><div class="detail-content">${detailSections(b)}</div></div></td></tr>`;
     }).join('');
   }
   countEl.textContent = `Displaying ${pageItems.length} of ${books.length} books`;
@@ -141,17 +167,18 @@ clearBtn.addEventListener('click', () => {
   render();
 });
 
-const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modal-img');
 tbody.addEventListener('click', (e) => {
-  const img = e.target.closest('.thumb-clickable');
-  if (!img) return;
-  modalImg.src = img.dataset.full;
-  modal.hidden = false;
-});
-modal.addEventListener('click', () => { modal.hidden = true; modalImg.src = ''; });
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !modal.hidden) { modal.hidden = true; modalImg.src = ''; }
+  const credit = e.target.closest('.credit-link');
+  if (credit) {
+    search.value = credit.dataset.credit;
+    updateClearVisibility();
+    currentPage = 1;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+  const row = e.target.closest('tr.book-row');
+  if (row) row.classList.toggle('open');
 });
 
 fetch('tpb_collection.csv')
@@ -166,11 +193,13 @@ fetch('tpb_collection.csv')
         volume: (r[1] || '').trim(),
         issues: (r[2] || '').trim(),
         publisher: (r[3] || '').trim(),
-        image: (r[4] || '').trim()
+        authors: [r[4], r[5]].map(s => (s || '').trim()).filter(Boolean),
+        artists: [r[6], r[7]].map(s => (s || '').trim()).filter(Boolean),
+        image: (r[8] || '').trim()
       }));
     render();
   })
   .catch(err => {
-    tbody.innerHTML = `<tr><td colspan="3" class="empty">Failed to load tpb_collection.csv. If opening this file directly (file://), run a local server instead — e.g. <code>python -m http.server</code> in this folder, then visit http://localhost:8000</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="2" class="empty">Failed to load tpb_collection.csv. If opening this file directly (file://), run a local server instead — e.g. <code>python -m http.server</code> in this folder, then visit http://localhost:8000</td></tr>`;
     console.error(err);
   });
