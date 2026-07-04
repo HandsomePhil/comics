@@ -153,6 +153,11 @@ paginationEl.addEventListener('click', (e) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+const searchBar = document.querySelector('.search-bar');
+new IntersectionObserver(([entry]) => {
+  searchBar.classList.toggle('stuck', !entry.isIntersecting);
+}).observe(document.getElementById('search-sentinel'));
+
 const searchWrapper = document.querySelector('.search-wrapper');
 const clearBtn = document.getElementById('clear-search');
 function updateClearVisibility() {

@@ -6,8 +6,8 @@
 <title>Phil's TPB Comic Collection</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700&family=Roboto:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css?v=21">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700&family=Roboto:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,900&display=swap">
+<link rel="stylesheet" href="styles.css?v=24">
 </head>
 <body>
 <main>
@@ -30,9 +30,10 @@
     </g>
   </svg>
   <h1>Phil's Comics</h1>
+  <div id="search-sentinel"></div>
   <div class="search-bar">
     <div class="search-wrapper">
-      <input id="search" type="search" placeholder="Search the collection" autofocus>
+      <input id="search" type="search" placeholder="Search the collection">
       <button id="clear-search" type="button" aria-label="Clear search">×</button>
     </div>
   </div>
@@ -48,6 +49,6 @@
   <div id="count"></div>
   <nav id="pagination" class="pagination" hidden></nav>
 </main>
-<script src="app.js?v=10" defer></script>
+<script src="app.js?v=11" defer></script>
 </body>
 </html>
