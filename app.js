@@ -41,9 +41,9 @@ function compareValues(a, b, key) {
   return a.localeCompare(b);
 }
 
-function creditButtons(names) {
+function creditButtons(names, type) {
   return names.map(n =>
-    `<button type="button" class="credit-link" data-credit="${escapeHtml(n)}">${escapeHtml(n)}</button>`
+    `<button type="button" class="credit-link credit-${type}" data-credit="${escapeHtml(n)}">${escapeHtml(n)}</button>`
   ).join('');
 }
 
@@ -53,10 +53,10 @@ function detailSections(b) {
     sections.push(`<div class="detail-section"><span class="detail-label">Collects</span><span class="detail-value">${escapeHtml(b.issues)}</span></div>`);
   }
   if (b.authors.length) {
-    sections.push(`<div class="detail-section"><span class="detail-label">Author</span><span class="credit-list">${creditButtons(b.authors)}</span></div>`);
+    sections.push(`<div class="detail-section"><span class="detail-label">Author</span><span class="credit-list">${creditButtons(b.authors, 'author')}</span></div>`);
   }
   if (b.artists.length) {
-    sections.push(`<div class="detail-section"><span class="detail-label">Artist</span><span class="credit-list">${creditButtons(b.artists)}</span></div>`);
+    sections.push(`<div class="detail-section"><span class="detail-label">Artist</span><span class="credit-list">${creditButtons(b.artists, 'artist')}</span></div>`);
   }
   if (!sections.length) {
     sections.push('<div class="detail-section"><span class="detail-value detail-empty">No details for this volume yet.</span></div>');
