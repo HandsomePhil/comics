@@ -181,7 +181,7 @@ tbody.addEventListener('click', (e) => {
   if (row) row.classList.toggle('open');
 });
 
-fetch('tpb_collection.csv')
+fetch('tpb_collection.csv', { cache: 'no-cache' })
   .then(r => r.text())
   .then(text => {
     const rows = parseCSV(text);
