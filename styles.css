@@ -426,6 +426,28 @@ tr.book-row.open + tr.detail-row .detail-inner {
 
 .empty { text-align: center; padding: 2rem; color: #f5f5f5; font-size: 1.6rem; }
 
+.thumb-clickable { cursor: zoom-in; transition: transform 0.1s; }
+.thumb-clickable:hover { transform: scale(1.05); }
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: zoom-out;
+  padding: 2rem;
+}
+.modal[hidden] { display: none; }
+.modal img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
 .pagination {
   display: flex;
   flex-wrap: wrap;

@@ -97,7 +97,7 @@ function render() {
   } else {
     tbody.innerHTML = pageItems.map(b => {
       const thumb = b.image
-        ? `<img class="thumb" src="${escapeHtml(b.image)}" alt="">`
+        ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="" data-full="${escapeHtml(b.image)}">`
         : `<div class="thumb thumb-placeholder"></div>`;
       const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       return `<tr class="book-row"><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol">${b.volume ? `<span class="vol-badge">${escapeHtml(b.volume)}</span>` : ''}</td></tr>` +
@@ -172,7 +172,20 @@ clearBtn.addEventListener('click', () => {
   render();
 });
 
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modal-img');
+modal.addEventListener('click', () => { modal.hidden = true; modalImg.src = ''; });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !modal.hidden) { modal.hidden = true; modalImg.src = ''; }
+});
+
 tbody.addEventListener('click', (e) => {
+  const img = e.target.closest('.thumb-clickable');
+  if (img) {
+    modalImg.src = img.dataset.full;
+    modal.hidden = false;
+    return;
+  }
   const credit = e.target.closest('.credit-link');
   if (credit) {
     search.value = credit.dataset.credit;
