@@ -20,25 +20,30 @@ function parseCSV(text) {
 }
 
 let books = [];
-let sortKey = null;       // null | 'title' | 'volume'
-let sortDir = 'asc';      // 'asc' | 'desc'
+let sortMode = 'shelf';  // 'shelf' | 'az' | 'za'
+let view = 'card';       // 'card' | 'list'
 let currentPage = 1;
-const PAGE_SIZE = 25;
+let pageItems = [];
+const PAGE_SIZE = 18;
 
+const tableEl = document.querySelector('table');
 const tbody = document.getElementById('tbody');
+const gridEl = document.getElementById('grid');
 const search = document.getElementById('search');
 const countEl = document.getElementById('count');
 const paginationEl = document.getElementById('pagination');
 
-function compareValues(a, b, key) {
-  if (key === 'volume') {
-    const na = parseFloat(a), nb = parseFloat(b);
-    const aNum = !isNaN(na), bNum = !isNaN(nb);
-    if (aNum && bNum) return na - nb;
-    if (aNum) return -1;
-    if (bNum) return 1;
-  }
+function compareVolumes(a, b) {
+  const na = parseFloat(a), nb = parseFloat(b);
+  const aNum = !isNaN(na), bNum = !isNaN(nb);
+  if (aNum && bNum) return na - nb;
+  if (aNum) return -1;
+  if (bNum) return 1;
   return a.localeCompare(b);
+}
+
+function bookCompare(a, b) {
+  return a.title.localeCompare(b.title) || compareVolumes(a.volume, b.volume);
 }
 
 function creditButtons(names, type) {
@@ -64,6 +69,26 @@ function detailSections(b) {
   return sections.join('');
 }
 
+function volChip(b) {
+  return b.volume ? `<span class="vol-chip">Vol.&nbsp;${escapeHtml(b.volume)}</span>` : '';
+}
+
+function rowHtml(b, i) {
+  const thumb = b.image
+    ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="">`
+    : `<div class="thumb thumb-placeholder"></div>`;
+  const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return `<tr class="book-row" data-i="${i}"><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div>${volChip(b)}</div></td></tr>` +
+    `<tr class="detail-row"><td><div class="detail-inner"><div class="detail-content${b.image ? ' has-cover' : ''}"${b.image ? ` style="--cover: url('${escapeHtml(b.image)}')"` : ''}>${detailSections(b)}</div></div></td></tr>`;
+}
+
+function cardHtml(b, i) {
+  const cover = b.image
+    ? `<img class="card-cover" loading="lazy" src="${escapeHtml(b.image)}" alt="">`
+    : `<div class="card-cover card-cover-placeholder"><span>${escapeHtml(b.title)}</span></div>`;
+  return `<div class="card" data-i="${i}">${cover}<div class="card-meta"><span class="card-pub">${escapeHtml(b.publisher)}</span><span class="card-title">${escapeHtml(b.title)}</span>${volChip(b)}</div></div>`;
+}
+
 function render() {
   const q = search.value.trim().toLowerCase();
   let list = books;
@@ -77,34 +102,31 @@ function render() {
       b.artists.some(n => n.toLowerCase().includes(q))
     );
   }
-  if (sortKey) {
-    const dir = sortDir === 'asc' ? 1 : -1;
-    list = [...list].sort((a, b) => dir * compareValues(a[sortKey], b[sortKey], sortKey));
-  }
-  document.querySelectorAll('th[data-sort]').forEach(th => {
-    const a = th.querySelector('.arrow');
-    a.textContent = th.dataset.sort === sortKey ? (sortDir === 'asc' ? '▲' : '▼') : '';
-  });
+  if (sortMode === 'az') list = [...list].sort(bookCompare);
+  else if (sortMode === 'za') list = [...list].sort((a, b) => -bookCompare(a, b));
 
   const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
   if (currentPage > totalPages) currentPage = totalPages;
   if (currentPage < 1) currentPage = 1;
   const start = (currentPage - 1) * PAGE_SIZE;
-  const pageItems = list.slice(start, start + PAGE_SIZE);
+  pageItems = list.slice(start, start + PAGE_SIZE);
 
+  const showCards = view === 'card';
+  tableEl.hidden = showCards;
+  gridEl.hidden = !showCards;
   if (list.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="2" class="empty">No matches.</td></tr>';
+    gridEl.innerHTML = showCards ? '<div class="empty">No matches.</div>' : '';
+    tbody.innerHTML = showCards ? '' : '<tr><td class="empty">No matches.</td></tr>';
+  } else if (showCards) {
+    gridEl.innerHTML = pageItems.map(cardHtml).join('');
+    tbody.innerHTML = '';
   } else {
-    tbody.innerHTML = pageItems.map(b => {
-      const thumb = b.image
-        ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="" data-full="${escapeHtml(b.image)}">`
-        : `<div class="thumb thumb-placeholder"></div>`;
-      const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      return `<tr class="book-row"><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div></div></td><td class="vol">${b.volume ? `<span class="vol-badge">${escapeHtml(b.volume)}</span>` : ''}</td></tr>` +
-        `<tr class="detail-row"><td colspan="2"><div class="detail-inner"><div class="detail-content${b.image ? ' has-cover' : ''}"${b.image ? ` style="--cover: url('${escapeHtml(b.image)}')"` : ''}>${detailSections(b)}</div></div></td></tr>`;
-    }).join('');
+    tbody.innerHTML = pageItems.map(rowHtml).join('');
+    gridEl.innerHTML = '';
   }
-  countEl.textContent = `Displaying ${pageItems.length} of ${books.length} books`;
+  countEl.textContent = q
+    ? `Displaying ${pageItems.length} of ${list.length} ${list.length === 1 ? 'match' : 'matches'}`
+    : `Displaying ${pageItems.length} of ${books.length} books`;
   renderPagination(list.length, totalPages);
 }
 
@@ -128,19 +150,45 @@ function escapeHtml(s) {
   return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-document.querySelectorAll('th[data-sort]').forEach(th => {
-  th.addEventListener('click', () => {
-    const key = th.dataset.sort;
-    if (sortKey !== key) {
-      sortKey = key;
-      sortDir = 'asc';
-    } else if (sortDir === 'asc') {
-      sortDir = 'desc';
-    } else {
-      sortKey = null;
-      sortDir = 'asc';
-    }
-    currentPage = 1;
+const sortWrap = document.querySelector('.sort-wrap');
+const sortBtn = document.getElementById('sort-btn');
+const sortMenu = document.getElementById('sort-menu');
+const sortLabel = document.getElementById('sort-label');
+const SORT_LABELS = { shelf: 'Shelf Order', az: 'A to Z', za: 'Z to A' };
+
+function closeSortMenu() {
+  sortMenu.hidden = true;
+  sortBtn.setAttribute('aria-expanded', 'false');
+}
+sortBtn.addEventListener('click', () => {
+  const open = sortMenu.hidden;
+  sortMenu.hidden = !open;
+  sortBtn.setAttribute('aria-expanded', String(open));
+});
+sortMenu.addEventListener('click', (e) => {
+  const opt = e.target.closest('button[data-sort]');
+  if (!opt) return;
+  sortMode = opt.dataset.sort;
+  sortLabel.textContent = SORT_LABELS[sortMode];
+  sortMenu.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === opt));
+  closeSortMenu();
+  currentPage = 1;
+  render();
+});
+document.addEventListener('click', (e) => {
+  if (!sortWrap.contains(e.target)) closeSortMenu();
+});
+
+const viewButtons = {
+  card: document.getElementById('view-card'),
+  list: document.getElementById('view-list')
+};
+Object.entries(viewButtons).forEach(([mode, btn]) => {
+  btn.addEventListener('click', () => {
+    if (view === mode) return;
+    view = mode;
+    viewButtons.card.classList.toggle('active', mode === 'card');
+    viewButtons.list.classList.toggle('active', mode === 'list');
     render();
   });
 });
@@ -172,31 +220,74 @@ clearBtn.addEventListener('click', () => {
   render();
 });
 
+function applyCreditSearch(name) {
+  search.value = name;
+  updateClearVisibility();
+  currentPage = 1;
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
-modal.addEventListener('click', () => { modal.hidden = true; modalImg.src = ''; });
+const modalDetails = document.getElementById('modal-details');
+
+function openModal(b) {
+  if (b.image) {
+    modalImg.src = b.image;
+    modalImg.hidden = false;
+  } else {
+    modalImg.src = '';
+    modalImg.hidden = true;
+  }
+  const publisherSection = b.publisher
+    ? `<div class="detail-section"><span class="detail-label">Publisher</span><span class="detail-value">${escapeHtml(b.publisher)}</span></div>`
+    : '';
+  modalDetails.innerHTML =
+    `<div class="modal-head"><h3 class="modal-title">${escapeHtml(b.title)}</h3>${volChip(b)}</div>` +
+    publisherSection +
+    detailSections(b);
+  modal.hidden = false;
+}
+function closeModal() {
+  modal.hidden = true;
+  modalImg.src = '';
+}
+modal.addEventListener('click', (e) => {
+  const credit = e.target.closest('.credit-link');
+  if (credit) {
+    applyCreditSearch(credit.dataset.credit);
+    closeModal();
+    return;
+  }
+  closeModal();
+});
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !modal.hidden) { modal.hidden = true; modalImg.src = ''; }
+  if (e.key === 'Escape') {
+    if (!modal.hidden) closeModal();
+    else closeSortMenu();
+  }
 });
 
 tbody.addEventListener('click', (e) => {
   const img = e.target.closest('.thumb-clickable');
   if (img) {
-    modalImg.src = img.dataset.full;
-    modal.hidden = false;
+    const row = img.closest('tr.book-row');
+    openModal(pageItems[row.dataset.i]);
     return;
   }
   const credit = e.target.closest('.credit-link');
   if (credit) {
-    search.value = credit.dataset.credit;
-    updateClearVisibility();
-    currentPage = 1;
-    render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    applyCreditSearch(credit.dataset.credit);
     return;
   }
   const row = e.target.closest('tr.book-row');
   if (row) row.classList.toggle('open');
+});
+
+gridEl.addEventListener('click', (e) => {
+  const card = e.target.closest('.card');
+  if (card) openModal(pageItems[card.dataset.i]);
 });
 
 fetch('tpb_collection.csv', { cache: 'no-cache' })
@@ -218,6 +309,8 @@ fetch('tpb_collection.csv', { cache: 'no-cache' })
     render();
   })
   .catch(err => {
-    tbody.innerHTML = `<tr><td colspan="2" class="empty">Failed to load tpb_collection.csv. If opening this file directly (file://), run a local server instead — e.g. <code>python -m http.server</code> in this folder, then visit http://localhost:8000</td></tr>`;
+    const msg = 'Failed to load tpb_collection.csv. If opening this file directly (file://), run a local server instead — e.g. <code>python -m http.server</code> in this folder, then visit http://localhost:8000';
+    gridEl.innerHTML = `<div class="empty">${msg}</div>`;
+    tbody.innerHTML = `<tr><td class="empty">${msg}</td></tr>`;
     console.error(err);
   });

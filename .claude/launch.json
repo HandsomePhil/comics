@@ -6,6 +6,12 @@
       "runtimeExecutable": "py",
       "runtimeArgs": ["-m", "http.server", "8013"],
       "port": 8013
+    },
+    {
+      "name": "comics-auto",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "py -m http.server %PORT%"],
+      "autoPort": true
     }
   ]
 }

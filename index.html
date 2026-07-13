@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Phil's TPB Comic Collection</title>
+<title>Phil's Comics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="styles.css?v=32">
 </head>
 <body>
 <main>
@@ -20,20 +20,20 @@
   </div>
   <svg class="logo" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Phil's TPB Collection logo">
     <!-- neon sign: fanned stack of outlined trade paperbacks -->
-    <g class="neon neon-yellow flicker">
-      <rect x="39" y="34" width="34" height="52" rx="4" fill="none" stroke="#FCC00E" stroke-width="4" transform="rotate(-18 56 60)"/>
+    <g class="neon neon-blue flicker">
+      <rect x="39" y="30" width="34" height="52" rx="4" fill="none" stroke="#859FDA" stroke-width="4" transform="rotate(-18 56 60)"/>
     </g>
     <g class="neon neon-green">
-      <rect x="87" y="34" width="34" height="52" rx="4" fill="none" stroke="#6BD636" stroke-width="4" transform="rotate(18 104 60)"/>
+      <rect x="87" y="30" width="34" height="52" rx="4" fill="none" stroke="#6BD636" stroke-width="4" transform="rotate(18 104 60)"/>
     </g>
     <!-- masks the back-book tubes behind the front book for depth -->
     <rect x="58" y="22" width="46" height="68" rx="4" fill="#080f1f"/>
-    <g class="neon neon-blue">
-      <rect x="58" y="22" width="46" height="68" rx="4" fill="none" stroke="#859FDA" stroke-width="4"/>
-    </g>
     <g class="neon neon-orange">
-      <circle cx="81" cy="56" r="15" fill="none" stroke="#F36A26" stroke-width="3"/>
-      <path d="M84 47l-9 11h5l-3 10 10-12h-5l4-9z" fill="none" stroke="#F36A26" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="58" y="22" width="46" height="68" rx="4" fill="none" stroke="#F36A26" stroke-width="4"/>
+    </g>
+    <g class="neon neon-yellow">
+      <circle cx="81" cy="56" r="15" fill="none" stroke="#FCC00E" stroke-width="3"/>
+      <path d="M84 47l-9 11h5l-3 10 10-12h-5l4-9z" fill="none" stroke="#FCC00E" stroke-width="2.5" stroke-linejoin="round"/>
     </g>
   </svg>
   <h1>Phil's Comics</h1>
@@ -45,21 +45,42 @@
       <button id="clear-search" type="button" aria-label="Clear search">×</button>
     </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th class="sortable" data-sort="title">Title<span class="arrow"></span></th>
-        <th class="vol sortable" data-sort="volume">Vol<span class="arrow"></span></th>
-      </tr>
-    </thead>
+  <div class="toolbar">
+    <div id="count"></div>
+    <div class="toolbar-controls">
+      <div class="sort-wrap">
+        <button id="sort-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          <span id="sort-label">Shelf Order</span>
+        </button>
+        <div id="sort-menu" class="sort-menu" hidden>
+          <button type="button" data-sort="shelf" class="selected"><span class="dot"></span>Shelf Order</button>
+          <button type="button" data-sort="az"><span class="dot"></span>A to Z</button>
+          <button type="button" data-sort="za"><span class="dot"></span>Z to A</button>
+        </div>
+      </div>
+      <div class="view-toggle">
+        <button id="view-card" type="button" class="active" aria-label="Card view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </button>
+        <button id="view-list" type="button" aria-label="List view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="9" y1="18" x2="21" y2="18"/><line x1="4" y1="6" x2="4.01" y2="6"/><line x1="4" y1="12" x2="4.01" y2="12"/><line x1="4" y1="18" x2="4.01" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="grid" class="card-grid"></div>
+  <table hidden>
     <tbody id="tbody"></tbody>
   </table>
-  <div id="count"></div>
   <nav id="pagination" class="pagination" hidden></nav>
 </main>
 <div id="modal" class="modal" hidden>
-  <img id="modal-img" alt="">
+  <div class="modal-box">
+    <img id="modal-img" alt="">
+    <div id="modal-details" class="modal-details"></div>
+  </div>
 </div>
-<script src="app.js?v=13" defer></script>
+<script src="app.js?v=16" defer></script>
 </body>
 </html>
