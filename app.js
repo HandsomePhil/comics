@@ -54,6 +54,9 @@ function creditButtons(names, type) {
 
 function detailSections(b) {
   const sections = [];
+  if (b.publisher) {
+    sections.push(`<div class="detail-section"><span class="detail-label">Publisher</span><span class="detail-value">${escapeHtml(b.publisher)}</span></div>`);
+  }
   if (b.issues) {
     sections.push(`<div class="detail-section"><span class="detail-label">Collects</span><span class="detail-value">${escapeHtml(b.issues)}</span></div>`);
   }
@@ -77,8 +80,7 @@ function rowHtml(b, i) {
   const thumb = b.image
     ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="">`
     : `<div class="thumb thumb-placeholder"></div>`;
-  const pubSlug = b.publisher.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  return `<tr class="book-row" data-i="${i}"><td><div class="title-cell">${thumb}<div class="title-text"><h2 data-publisher="${escapeHtml(pubSlug)}">${escapeHtml(b.publisher)}</h2><h3>${escapeHtml(b.title)}</h3></div>${volChip(b)}</div></td></tr>` +
+  return `<tr class="book-row" data-i="${i}"><td><div class="title-cell">${thumb}<div class="title-text"><h3>${escapeHtml(b.title)}</h3></div>${volChip(b)}</div></td></tr>` +
     `<tr class="detail-row"><td><div class="detail-inner"><div class="detail-content${b.image ? ' has-cover' : ''}"${b.image ? ` style="--cover: url('${escapeHtml(b.image)}')"` : ''}>${detailSections(b)}</div></div></td></tr>`;
 }
 
@@ -86,7 +88,7 @@ function cardHtml(b, i) {
   const cover = b.image
     ? `<img class="card-cover" loading="lazy" src="${escapeHtml(b.image)}" alt="">`
     : `<div class="card-cover card-cover-placeholder"><span>${escapeHtml(b.title)}</span></div>`;
-  return `<div class="card" data-i="${i}">${cover}<div class="card-meta"><span class="card-pub">${escapeHtml(b.publisher)}</span><span class="card-title">${escapeHtml(b.title)}</span>${volChip(b)}</div></div>`;
+  return `<div class="card" data-i="${i}">${cover}<div class="card-meta"><span class="card-title">${escapeHtml(b.title)}</span>${volChip(b)}</div></div>`;
 }
 
 function render() {
@@ -240,12 +242,8 @@ function openModal(b) {
     modalImg.src = '';
     modalImg.hidden = true;
   }
-  const publisherSection = b.publisher
-    ? `<div class="detail-section"><span class="detail-label">Publisher</span><span class="detail-value">${escapeHtml(b.publisher)}</span></div>`
-    : '';
   modalDetails.innerHTML =
     `<div class="modal-head"><h3 class="modal-title">${escapeHtml(b.title)}</h3>${volChip(b)}</div>` +
-    publisherSection +
     detailSections(b);
   modal.hidden = false;
 }

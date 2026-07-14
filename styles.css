@@ -357,24 +357,6 @@ tr.book-row.open td {
 .thumb-placeholder { background: #080f1f; }
 .title-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
 
-.title-text h2 {
-  margin: 0;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  /* letter-spacing: 0.05em; */
-  color: #859FDA;
-}
-
-/* .title-text h2[data-publisher="marvel"] { color: #ED1D24; opacity: 0.8; }
-.title-text h2[data-publisher="wildstorm"] { color: #675CAF; opacity: 0.8;}
-.title-text h2[data-publisher="dc"] { color: #0078F0; }
-.title-text h2[data-publisher="dark-horse"] { color: #000; }
-.title-text h2[data-publisher="image"] { color: #1A1A1A; }
-.title-text h2[data-publisher="vertigo"] { color: #...; }
-.title-text h2[data-publisher="cliffhanger-dc"] { color: #...; } "Cliffhanger / DC" */
-
 .title-text h3 {
   margin: 0;
   font-family: "Roboto Condensed", sans-serif;
@@ -529,12 +511,7 @@ tr.book-row.open + tr.detail-row .detail-inner {
   align-items: flex-start;
   gap: 3px;
   padding: 8px 10px 10px;
-}
-.card-pub {
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  color: #859FDA;
+  flex: 1;
 }
 .card-title {
   font-family: "Roboto Condensed", sans-serif;
@@ -543,7 +520,7 @@ tr.book-row.open + tr.detail-row .detail-inner {
   color: #f5f5f5;
 }
 .card .vol-chip {
-  margin: 3px 0 0;
+  margin: auto 0 0;
   padding: 1px 8px;
   font-size: 0.65rem;
 }
@@ -638,7 +615,6 @@ tr.book-row.open + tr.detail-row .detail-inner {
   .title-cell { gap: 0.6rem; }
   .vol-chip { padding: 1px 8px; }
   .thumb { width: 48px; height: 72px; }
-  .title-text h2 { font-size: 0.65rem; }
   .title-text h3 { font-size: 1.1rem; font-weight: 400; }
   .detail-section { padding: 0 12px; }
   .modal-details .detail-section { padding: 0 16px; }
