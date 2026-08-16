@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css?v=35">
+<link rel="stylesheet" href="styles.css?v=38">
 </head>
 <body>
 <main>
@@ -47,6 +47,28 @@
   </div>
   <div class="toolbar">
     <div class="toolbar-controls">
+      <div class="view-toggle">
+        <button id="view-card" type="button" class="active" aria-label="Card view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </button>
+        <button id="view-list" type="button" aria-label="List view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="9" y1="18" x2="21" y2="18"/><line x1="4" y1="6" x2="4.01" y2="6"/><line x1="4" y1="12" x2="4.01" y2="12"/><line x1="4" y1="18" x2="4.01" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="sort-wrap perpage-wrap">
+        <button id="perpage-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+          <span id="perpage-label">15</span>
+        </button>
+        <div id="perpage-menu" class="sort-menu filter-menu" hidden>
+          <button type="button" data-perpage="15" class="selected"><span class="dot"></span>15</button>
+          <button type="button" data-perpage="30"><span class="dot"></span>30</button>
+          <button type="button" data-perpage="60"><span class="dot"></span>60</button>
+          <button type="button" data-perpage="90"><span class="dot"></span>90</button>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar-right">
       <div class="sort-wrap">
         <button id="sort-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
@@ -73,14 +95,6 @@
         </div>
       </div>
     </div>
-    <div class="view-toggle">
-        <button id="view-card" type="button" class="active" aria-label="Card view">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </button>
-        <button id="view-list" type="button" aria-label="List view">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="9" y1="18" x2="21" y2="18"/><line x1="4" y1="6" x2="4.01" y2="6"/><line x1="4" y1="12" x2="4.01" y2="12"/><line x1="4" y1="18" x2="4.01" y2="18"/></svg>
-        </button>
-      </div>
   </div>
   <div id="grid" class="card-grid"></div>
   <table hidden>
@@ -95,6 +109,6 @@
     <div id="modal-details" class="modal-details"></div>
   </div>
 </div>
-<script src="app.js?v=20" defer></script>
+<script src="app.js?v=23" defer></script>
 </body>
 </html>

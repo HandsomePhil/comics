@@ -235,7 +235,8 @@ h1 {
   gap: 8px 12px;
   margin: 2px 0 12px;
 }
-.toolbar-controls {
+.toolbar-controls,
+.toolbar-right {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -243,7 +244,8 @@ h1 {
 
 .sort-wrap { position: relative; }
 #sort-btn,
-#filter-btn {
+#filter-btn,
+#perpage-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -260,9 +262,11 @@ h1 {
   cursor: pointer;
 }
 #sort-btn:hover,
-#filter-btn:hover { border-color: #9BA8C7; color: #fff; }
+#filter-btn:hover,
+#perpage-btn:hover { border-color: #9BA8C7; color: #fff; }
 #sort-btn svg,
-#filter-btn svg { width: 0.95rem; height: 0.95rem; color: #859fda; }
+#filter-btn svg,
+#perpage-btn svg { width: 0.95rem; height: 0.95rem; color: #859fda; }
 .sort-menu {
   position: absolute;
   left: 0;
@@ -276,7 +280,8 @@ h1 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .sort-menu[hidden] { display: none; }
-.filter-menu { left: 0; right: auto; }
+#sort-menu, #filter-menu { left: auto; right: 0; }
+#perpage-menu { left: 0; right: auto; min-width: 0; }
 .sort-menu button {
   display: flex;
   align-items: center;

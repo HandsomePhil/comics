@@ -24,7 +24,7 @@ let sortMode = 'shelf';  // 'shelf' | 'az' | 'za'
 let view = 'card';       // 'card' | 'list'
 let currentPage = 1;
 let pageItems = [];
-const PAGE_SIZE = 15;
+let pageSize = 15;
 
 const tableEl = document.querySelector('table');
 const tbody = document.getElementById('tbody');
@@ -108,11 +108,11 @@ function render() {
   else if (sortMode === 'za') list = [...list].sort((a, b) => -bookCompare(a, b));
   else if (sortMode === 'random') list = [...list].sort((a, b) => a._rand - b._rand);
 
-  const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(list.length / pageSize));
   if (currentPage > totalPages) currentPage = totalPages;
   if (currentPage < 1) currentPage = 1;
-  const start = (currentPage - 1) * PAGE_SIZE;
-  pageItems = list.slice(start, start + PAGE_SIZE);
+  const start = (currentPage - 1) * pageSize;
+  pageItems = list.slice(start, start + pageSize);
 
   const showCards = view === 'card';
   tableEl.hidden = showCards;
@@ -134,7 +134,7 @@ function render() {
 }
 
 function renderPagination(total, totalPages) {
-  if (total <= PAGE_SIZE) {
+  if (total <= pageSize) {
     paginationEl.hidden = true;
     paginationEl.innerHTML = '';
     return;
@@ -153,8 +153,8 @@ function escapeHtml(s) {
   return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-const sortWrap = document.querySelector('.sort-wrap');
 const sortBtn = document.getElementById('sort-btn');
+const sortWrap = sortBtn.closest('.sort-wrap');
 const sortMenu = document.getElementById('sort-menu');
 const sortLabel = document.getElementById('sort-label');
 const SORT_LABELS = { shelf: 'Shelf Order', az: 'A to Z', za: 'Z to A', random: 'Random' };
@@ -168,6 +168,7 @@ sortBtn.addEventListener('click', () => {
   sortMenu.hidden = !open;
   sortBtn.setAttribute('aria-expanded', String(open));
   closeFilterMenu();
+  closePerpageMenu();
 });
 sortMenu.addEventListener('click', (e) => {
   const opt = e.target.closest('button[data-sort]');
@@ -197,6 +198,7 @@ filterBtn.addEventListener('click', () => {
   filterMenu.hidden = !open;
   filterBtn.setAttribute('aria-expanded', String(open));
   closeSortMenu();
+  closePerpageMenu();
 });
 filterMenu.addEventListener('click', (e) => {
   const opt = e.target.closest('button[data-filter]');
@@ -206,6 +208,36 @@ filterMenu.addEventListener('click', (e) => {
 });
 document.addEventListener('click', (e) => {
   if (!filterWrap.contains(e.target)) closeFilterMenu();
+});
+
+const perpageWrap = document.querySelector('.perpage-wrap');
+const perpageBtn = document.getElementById('perpage-btn');
+const perpageMenu = document.getElementById('perpage-menu');
+const perpageLabel = document.getElementById('perpage-label');
+
+function closePerpageMenu() {
+  perpageMenu.hidden = true;
+  perpageBtn.setAttribute('aria-expanded', 'false');
+}
+perpageBtn.addEventListener('click', () => {
+  const open = perpageMenu.hidden;
+  perpageMenu.hidden = !open;
+  perpageBtn.setAttribute('aria-expanded', String(open));
+  closeSortMenu();
+  closeFilterMenu();
+});
+perpageMenu.addEventListener('click', (e) => {
+  const opt = e.target.closest('button[data-perpage]');
+  if (!opt) return;
+  pageSize = parseInt(opt.dataset.perpage, 10);
+  perpageLabel.textContent = opt.dataset.perpage;
+  perpageMenu.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === opt));
+  closePerpageMenu();
+  currentPage = 1;
+  render();
+});
+document.addEventListener('click', (e) => {
+  if (!perpageWrap.contains(e.target)) closePerpageMenu();
 });
 
 const viewButtons = {
@@ -290,7 +322,7 @@ modal.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     if (!modal.hidden) closeModal();
-    else { closeSortMenu(); closeFilterMenu(); }
+    else { closeSortMenu(); closeFilterMenu(); closePerpageMenu(); }
   }
 });
 
