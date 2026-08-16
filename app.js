@@ -24,7 +24,7 @@ let sortMode = 'shelf';  // 'shelf' | 'az' | 'za'
 let view = 'card';       // 'card' | 'list'
 let currentPage = 1;
 let pageItems = [];
-const PAGE_SIZE = 18;
+const PAGE_SIZE = 15;
 
 const tableEl = document.querySelector('table');
 const tbody = document.getElementById('tbody');
@@ -78,7 +78,7 @@ function volChip(b) {
 
 function rowHtml(b, i) {
   const thumb = b.image
-    ? `<img class="thumb thumb-clickable" src="${escapeHtml(b.image)}" alt="">`
+    ? `<img class="thumb thumb-clickable" loading="lazy" src="${escapeHtml(b.image)}" alt="">`
     : `<div class="thumb thumb-placeholder"></div>`;
   return `<tr class="book-row" data-i="${i}"><td><div class="title-cell">${thumb}<div class="title-text"><h3>${escapeHtml(b.title)}</h3></div>${volChip(b)}</div></td></tr>` +
     `<tr class="detail-row"><td><div class="detail-inner"><div class="detail-content${b.image ? ' has-cover' : ''}"${b.image ? ` style="--cover: url('${escapeHtml(b.image)}')"` : ''}>${detailSections(b)}</div></div></td></tr>`;
@@ -106,6 +106,7 @@ function render() {
   }
   if (sortMode === 'az') list = [...list].sort(bookCompare);
   else if (sortMode === 'za') list = [...list].sort((a, b) => -bookCompare(a, b));
+  else if (sortMode === 'random') list = [...list].sort((a, b) => a._rand - b._rand);
 
   const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
   if (currentPage > totalPages) currentPage = totalPages;
@@ -156,7 +157,7 @@ const sortWrap = document.querySelector('.sort-wrap');
 const sortBtn = document.getElementById('sort-btn');
 const sortMenu = document.getElementById('sort-menu');
 const sortLabel = document.getElementById('sort-label');
-const SORT_LABELS = { shelf: 'Shelf Order', az: 'A to Z', za: 'Z to A' };
+const SORT_LABELS = { shelf: 'Shelf Order', az: 'A to Z', za: 'Z to A', random: 'Random' };
 
 function closeSortMenu() {
   sortMenu.hidden = true;
@@ -166,11 +167,13 @@ sortBtn.addEventListener('click', () => {
   const open = sortMenu.hidden;
   sortMenu.hidden = !open;
   sortBtn.setAttribute('aria-expanded', String(open));
+  closeFilterMenu();
 });
 sortMenu.addEventListener('click', (e) => {
   const opt = e.target.closest('button[data-sort]');
   if (!opt) return;
   sortMode = opt.dataset.sort;
+  if (sortMode === 'random') books.forEach(b => { b._rand = Math.random(); });
   sortLabel.textContent = SORT_LABELS[sortMode];
   sortMenu.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === opt));
   closeSortMenu();
@@ -179,6 +182,30 @@ sortMenu.addEventListener('click', (e) => {
 });
 document.addEventListener('click', (e) => {
   if (!sortWrap.contains(e.target)) closeSortMenu();
+});
+
+const filterWrap = document.querySelector('.filter-wrap');
+const filterBtn = document.getElementById('filter-btn');
+const filterMenu = document.getElementById('filter-menu');
+
+function closeFilterMenu() {
+  filterMenu.hidden = true;
+  filterBtn.setAttribute('aria-expanded', 'false');
+}
+filterBtn.addEventListener('click', () => {
+  const open = filterMenu.hidden;
+  filterMenu.hidden = !open;
+  filterBtn.setAttribute('aria-expanded', String(open));
+  closeSortMenu();
+});
+filterMenu.addEventListener('click', (e) => {
+  const opt = e.target.closest('button[data-filter]');
+  if (!opt) return;
+  closeFilterMenu();
+  applyCreditSearch(opt.dataset.filter);
+});
+document.addEventListener('click', (e) => {
+  if (!filterWrap.contains(e.target)) closeFilterMenu();
 });
 
 const viewButtons = {
@@ -263,7 +290,7 @@ modal.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     if (!modal.hidden) closeModal();
-    else closeSortMenu();
+    else { closeSortMenu(); closeFilterMenu(); }
   }
 });
 

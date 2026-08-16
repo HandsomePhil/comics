@@ -223,6 +223,8 @@ h1 {
   user-select: none;
   font-size: 0.6rem;
   text-transform: uppercase;
+  text-align: center;
+  margin-top: 1.4rem;
 }
 
 .toolbar {
@@ -237,11 +239,11 @@ h1 {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-left: auto;
 }
 
 .sort-wrap { position: relative; }
-#sort-btn {
+#sort-btn,
+#filter-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -257,11 +259,13 @@ h1 {
   letter-spacing: 0.05em;
   cursor: pointer;
 }
-#sort-btn:hover { border-color: #9BA8C7; color: #fff; }
-#sort-btn svg { width: 0.95rem; height: 0.95rem; color: #859fda; }
+#sort-btn:hover,
+#filter-btn:hover { border-color: #9BA8C7; color: #fff; }
+#sort-btn svg,
+#filter-btn svg { width: 0.95rem; height: 0.95rem; color: #859fda; }
 .sort-menu {
   position: absolute;
-  right: 0;
+  left: 0;
   top: calc(100% + 6px);
   min-width: 150px;
   background: #111E34;
@@ -272,6 +276,7 @@ h1 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .sort-menu[hidden] { display: none; }
+.filter-menu { left: 0; right: auto; }
 .sort-menu button {
   display: flex;
   align-items: center;

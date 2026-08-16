@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css?v=33">
+<link rel="stylesheet" href="styles.css?v=35">
 </head>
 <body>
 <main>
@@ -46,7 +46,6 @@
     </div>
   </div>
   <div class="toolbar">
-    <div id="count"></div>
     <div class="toolbar-controls">
       <div class="sort-wrap">
         <button id="sort-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
@@ -57,9 +56,24 @@
           <button type="button" data-sort="shelf" class="selected"><span class="dot"></span>Shelf Order</button>
           <button type="button" data-sort="az"><span class="dot"></span>A to Z</button>
           <button type="button" data-sort="za"><span class="dot"></span>Z to A</button>
+          <button type="button" data-sort="random"><span class="dot"></span>Random</button>
         </div>
       </div>
-      <div class="view-toggle">
+      <div class="sort-wrap filter-wrap">
+        <button id="filter-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          <span id="filter-label">Filter</span>
+        </button>
+        <div id="filter-menu" class="sort-menu filter-menu" hidden>
+          <button type="button" data-filter=""><span class="dot"></span>Default</button>
+          <button type="button" data-filter="Avengers"><span class="dot"></span>Avengers</button>
+          <button type="button" data-filter="Invincible"><span class="dot"></span>Invincible</button>
+          <button type="button" data-filter="Spider-Man"><span class="dot"></span>Spider-Man</button>
+          <button type="button" data-filter="X-Men"><span class="dot"></span>X-Men</button>
+        </div>
+      </div>
+    </div>
+    <div class="view-toggle">
         <button id="view-card" type="button" class="active" aria-label="Card view">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         </button>
@@ -67,12 +81,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="9" y1="18" x2="21" y2="18"/><line x1="4" y1="6" x2="4.01" y2="6"/><line x1="4" y1="12" x2="4.01" y2="12"/><line x1="4" y1="18" x2="4.01" y2="18"/></svg>
         </button>
       </div>
-    </div>
   </div>
   <div id="grid" class="card-grid"></div>
   <table hidden>
     <tbody id="tbody"></tbody>
   </table>
+  <div id="count"></div>
   <nav id="pagination" class="pagination" hidden></nav>
 </main>
 <div id="modal" class="modal" hidden>
@@ -81,6 +95,6 @@
     <div id="modal-details" class="modal-details"></div>
   </div>
 </div>
-<script src="app.js?v=17" defer></script>
+<script src="app.js?v=20" defer></script>
 </body>
 </html>
