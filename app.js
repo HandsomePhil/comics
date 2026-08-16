@@ -156,8 +156,6 @@ function escapeHtml(s) {
 const sortBtn = document.getElementById('sort-btn');
 const sortWrap = sortBtn.closest('.sort-wrap');
 const sortMenu = document.getElementById('sort-menu');
-const sortLabel = document.getElementById('sort-label');
-const SORT_LABELS = { shelf: 'Shelf Order', az: 'A to Z', za: 'Z to A', random: 'Random' };
 
 function closeSortMenu() {
   sortMenu.hidden = true;
@@ -175,7 +173,6 @@ sortMenu.addEventListener('click', (e) => {
   if (!opt) return;
   sortMode = opt.dataset.sort;
   if (sortMode === 'random') books.forEach(b => { b._rand = Math.random(); });
-  sortLabel.textContent = SORT_LABELS[sortMode];
   sortMenu.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === opt));
   closeSortMenu();
   currentPage = 1;

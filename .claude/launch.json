@@ -2,16 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "comics",
-      "runtimeExecutable": "py",
-      "runtimeArgs": ["-m", "http.server", "8013"],
-      "port": 8013
-    },
-    {
-      "name": "comics-auto",
-      "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "py -m http.server %PORT%"],
-      "autoPort": true
+      "name": "comics-static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8137"],
+      "port": 8137
     }
   ]
 }

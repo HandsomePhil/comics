@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700;900&family=Roboto:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css?v=39">
+<link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body>
 <main>
@@ -71,8 +71,8 @@
     <div class="toolbar-right">
       <div class="sort-wrap">
         <button id="sort-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-          <span id="sort-label">Shelf Order</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v18"/><path d="M4 7l4-4 4 4"/><path d="M16 21V3"/><path d="M20 17l-4 4-4-4"/></svg>
+          <span id="sort-label">Sort</span>
         </button>
         <div id="sort-menu" class="sort-menu" hidden>
           <button type="button" data-sort="shelf" class="selected"><span class="dot"></span>Shelf Order</button>
@@ -88,6 +88,12 @@
         </button>
         <div id="filter-menu" class="sort-menu filter-menu" hidden>
           <button type="button" data-filter=""><span class="dot"></span>Default</button>
+          <div class="menu-sep" role="separator"></div>
+          <button type="button" data-filter="Marvel"><span class="dot"></span>Marvel</button>
+          <button type="button" data-filter="DC"><span class="dot"></span>DC</button>
+          <button type="button" data-filter="Image"><span class="dot"></span>Image</button>
+          <button type="button" data-filter="Dark Horse"><span class="dot"></span>Dark Horse</button>
+          <div class="menu-sep" role="separator"></div>
           <button type="button" data-filter="Avengers"><span class="dot"></span>Avengers</button>
           <button type="button" data-filter="Invincible"><span class="dot"></span>Invincible</button>
           <button type="button" data-filter="Spider-Man"><span class="dot"></span>Spider-Man</button>
@@ -109,6 +115,6 @@
     <div id="modal-details" class="modal-details"></div>
   </div>
 </div>
-<script src="app.js?v=23" defer></script>
+<script src="app.js?v=24" defer></script>
 </body>
 </html>
