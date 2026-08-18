@@ -58,7 +58,7 @@ Uncanny Avengers,4,Uncanny Avengers #18-22,Marvel,Rick Remender,,Daniel Acuña,D
 Uncanny Avengers,5,Uncanny Avengers #23-25,Marvel,Rick Remender,,Sanford Green,Daniel Acuña,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7420402.jpg?1701670229
 Batman: Hush,1,,DC,Jeph Loeb,,Jim Lee,Scott Williams,https://s3.amazonaws.com/comicgeeks/comics/covers/large-6714492.jpg?1754889808
 Batman: Hush,2,,DC,Jeph Loeb,,Jim Lee,Scott Williams,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8147353.jpg?1754936059
-Batman: The Long Halloween,,,DC,Jeph Loeb,,Tim Sale,,https://m.media-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369110_.gif
+Batman: The Long Halloween,,,DC,Jeph Loeb,,Tim Sale,,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1350137101i/106069.jpg
 Batman: RIP,,,DC,Grant Morrison,,Tony S. Daniel,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8013077.jpg?1752977090
 Batman: Year One,,,DC,Frank Miller,,David Mazzucchelli,Richmond Lewis,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1574630214i/59980.jpg
 Batman vs Predator,,,DC / Dark Horse,Dave Gibbons,,Andy Kubert,Adam Kubert,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9002236.jpg?1772835849
@@ -155,59 +155,58 @@ Hawkeye: My Life as a Weapon,1,"Hawkeye #1-5, Young Avengers Presents #6",Marvel
 Hawkeye: Little Hits,2,Hawkeye #6-11,Marvel,Matt Fraction,,David Aja,Matt Hollingsworth,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8654870.jpg?1730791120
 Hawkeye: L.A. Woman,3,"Hawkeye #14, 16, 18, 20, Annual #1",Marvel,Matt Fraction,,Annie Wu,Javier Pulido,https://s3.amazonaws.com/comicgeeks/comics/covers/large-1262612.jpg?1725723431
 Hawkeye: Rio Bravo,4,"Hawkeye #12-13, 15, 17, 19, 21-22",Marvel,Matt Fraction,,David Aja,Chris Eliopoulos,https://s3.amazonaws.com/comicgeeks/comics/covers/large-5126574.jpg?1724559783
-Head Lopper & The Island of a Plague of Beasts,1,,Image,,,,,
-Head Lopper & the Crimson Tower,2,,Image,,,,,
-"John Constantine, Hellblazer: Dangerous Habits",,,Vertigo,,,,,
-"John Constantine, Hellblazer: Good Intentions",,,Vertigo,,,,,
-"John Constantine, Hellblazer: Tainted Love",,,Vertigo,,,,,
-"John Constantine, Hellblazer: Son of Man",,,Vertigo,,,,,
-"John Constantine, Hellblazer: Fear and Loathing",,,Vertigo,,,,,
-"John Constantine, Hellblazer: Damnation's Flame",,,Vertigo,,,,,
-"John Constantine, Hellblazer: Bloodlines",,,Vertigo,,,,,
-Hellboy: Seed of Destruction,1,,Dark Horse,,,,,
-Hellboy: Wake the Devil,2,,Dark Horse,,,,,
-Herobear and the Kid: The Inheritance,1,,Kaboom!,,,,,
-"Hobbit, The",,,Del Ray,,,,,
-Head Lopper,1,,,,,,,
-Hulk: Planet Hulk Prelude,1,,Marvel,,,,,
-Hulk: Planet Hulk,,,Marvel,,,,,
-Hulk: World War Hulk,,,Marvel,,,,,
-Hulk: The Complete Collection,1,,Marvel,,,,,
-Hulk: The Complete Collection,2,,Marvel,,,,,
-I Kill Giants,,,Image,,,,,
-Infinite Crisis,,,DC,,,,,
-"Infinity Gauntlet, The",,,Marvel,,,,,
-Invincible: Family Matters,1,,Image,,,,,
-Invincible: Eight is Enough,2,,Image,,,,,
-Invincible: Perfect Strangers,3,,Image,,,,,
-Invincible: Head of the Class,4,,Image,,,,,
-Invincible: The Facts of Life,5,,Image,,,,,
-Invincible: A Different World,6,,Image,,,,,
-Invincible: Three's Company,7,,Image,,,,,
-Invincible: My Favorite Martian,8,,Image,,,,,
-Invincible: Out of This World,9,,Image,,,,,
-Invincible: Who's The Boss?,10,,Image,,,,,
-Invincible: Happy Days,11,,Image,,,,,
-Invincible: Still Standing,12,,Image,,,,,
-Invincible: Growing Pains,13,,Image,,,,,
-Invincible: The Viltrumite War,14,,Image,,,,,
-Invincible: Get Smart,15,,Image,,,,,
-Invincible: Family Ties,16,,Image,,,,,
-Invincible: What's Happening,17,,Image,,,,,
-Invincible: The Death of Everyone,18,,Image,,,,,
-Invincible: The War at Home,19,,Image,,,,,
-Invincible: Friends,20,,Image,,,,,
-Invincible: Modern Family,21,,Image,,,,,
-Invincible: Reboot?,22,,Image,,,,,
-Invincible: Full House,23,,Image,,,,,
-Invincible: The End of All Things Part 1,24,,Image,,,,,
-Invincible: The End of All Things Part 2,25,,Image,,,,,
-Iron Man: Extremis,,,Marvel,,,,,
-"Invincible Iron Man, The: The Five Nightmares",,,Marvel,,,,,
-Iron West,,,Image,,,,,
-JLA: Tower of Babel,7,,DC,,,,,
-King in Black,,,Marvel,,,,,
-Kingdom Come,,,DC,,,,,
+Head Lopper & The Island of a Plague of Beasts,1,Head Lopper #1-4,Image,Andrew Maclean,,Mike Spicer,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9117630.jpg?1714850359
+Head Lopper & the Crimson Tower,2,Head Lopper #5-8,Image,Andrew Maclean,,Jordie Bellaire,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-6878142.jpg?1714850382
+"John Constantine, Hellblazer: Dangerous Habits",,Hellblazer #41-46,Vertigo,Garth Ennis,,Will Simpson,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-1597569.jpg?1723451108
+"John Constantine, Hellblazer: Bloodlines",,"Hellblazer #47-50, #52-55, #59-61",Vertigo,Garth Ennis,,Will Simpson,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8094634.jpg?1738879739
+"John Constantine, Hellblazer: Fear and Loathing",,Hellblazer #62-67,Vertigo,Garth Ennis,,Steve Dillon,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-3719905.jpg?1734797197
+"John Constantine, Hellblazer: Tainted Love",,Hellblazer #68-71,Vertigo,Garth Ennis,,Steve Dillon,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8092783.jpg?1731234562
+"John Constantine, Hellblazer: Damnation's Flame",,Hellblazer #72-77,Vertigo,Garth Ennis,,Steve Dillon,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-3103247.jpg?1731234575
+"John Constantine, Hellblazer: Son of Man",,Hellblazer #129-133,Vertigo,Garth Ennis,,John Higgins,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9908117.jpg?1731234669
+"John Constantine, Hellblazer: Good Intentions",,Hellblazer #151-156,Vertigo,Brian Azzarello,,Marcelo Frusin,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8394129.jpg?1761372373
+Hellboy: Seed of Destruction,1,Hellboy #1-4,Dark Horse,Mike Mignola,John Byrne,Mike Mignola,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-3229823.jpg?1778384008
+Hellboy: Wake the Devil,2,Hellboy: Wake the Devil #1-5,Dark Horse,Mike Mignola,,Mike Mignola,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7092642.jpg?1779154637
+Herobear and the Kid: The Inheritance,1,Herobear and the Kid: The Inheritance #1-5,Kaboom!,Mike Kunkel,,Mike Kunkel,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9696111.jpg?1399943444
+Hulk: Planet Hulk Prelude,1,"Fantastic Four #533-535, Incredible Hulk #88-91",Marvel,Daniel Way,J. Michael Straczynski,Keu Cha,Juan Santacruz,https://s3.amazonaws.com/comicgeeks/comics/covers/large-5166922.jpg?1753437018
+Hulk: Planet Hulk,,Incredible Hulk #92-105,Marvel,Greg Pak,,Carlo Pagulayan,Aaron Lopresti,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7256329.jpg?1745719240
+Hulk: World War Hulk,,World War Hulk #1-5,Marvel,Greg Pak,,John Romita Jr.,,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1585575377i/2439686.jpg
+Hulk: The Complete Collection,1,"Hulk (2008) #1-12, King-Size Hulk #1, Incredible Hulk (1968) #600",Marvel,Jeph Loeb,,Ed McGuinness ,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-2608104.jpg?1741904606
+Hulk: The Complete Collection,2,"Hulk (2008) #13-24, Fall of the Hulks: Gamma #1",Marvel,Jeph Loeb,,Ed McGuinness ,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-6838591.jpg?1743858795
+I Kill Giants,,I Kill Giants #1-7,Image,Joe Kelly,,Jim Ken Niimura,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-4972420.jpg?1726879078
+Infinite Crisis,,Infinite Crisis #1-7,DC,Geoff Johns,,Phil Jimenez,,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1361488782i/2266242.jpg
+"Infinity Gauntlet, The",,Infinity Gauntlet #1-6,Marvel,Jim Starlin,,George Pérez,Ron Lim,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1565279446i/398916.jpg
+Invincible: Family Matters,1,Invincible #1-4,Image,Robert Kirkman,,Cory Walker,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8292866.jpg?1756404458
+Invincible: Eight is Enough,2,Invincible #5-8,Image,Robert Kirkman,,Cory Walker,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7616849.jpg?1779147753
+Invincible: Perfect Strangers,3,Invincible #9-12,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7138480.jpg?1710884796
+Invincible: Head of the Class,4,Invincible #14-19,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-4837159.jpg?1758066831
+Invincible: The Facts of Life,5,"Invincible #0, 20-24",Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9024240.jpg?1778284864
+Invincible: A Different World,6,Invincible #25-30,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8035193.jpg?1715342847
+Invincible: Three's Company,7,"Invincible #31-35, The Pact #4",Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-6925612.jpg?1715342877
+Invincible: My Favorite Martian,8,Invincible #36-41,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8870916.jpg?1778284932
+Invincible: Out of This World,9,Invincible #42-47,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-5810176.jpg?1710885031
+Invincible: Who's The Boss?,10,Invincible #48-53,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-1900128.jpg?1778284993
+Invincible: Happy Days,11,Invincible #54-59,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-4319381.jpg?1778285033
+Invincible: Still Standing,12,Invincible #60-65,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7658720.jpg?1778285067
+Invincible: Growing Pains,13,"Invincible #66-70, Invincible Returns #1",Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-2771540.jpg?1778285115
+Invincible: The Viltrumite War,14,Invincible #71-78,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-6143003.jpg?1778285150
+Invincible: Get Smart,15,Invincible #79-84,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-5423261.jpg?1778285185
+Invincible: Family Ties,16,Invincible #85-90,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9008271.jpg?1778285413
+Invincible: What's Happening,17,Invincible #91-96,Image,Robert Kirkman,,Ryan Ottley,Cory Walker,https://s3.amazonaws.com/comicgeeks/comics/covers/large-3273899.jpg?1778285495
+Invincible: The Death of Everyone,18,Invincible #97-102,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8740587.jpg?1778285528
+Invincible: The War at Home,19,Invincible #103-108,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-4206648.jpg?1778285562
+Invincible: Friends,20,Invincible #109-114,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8995307.jpg?1778285602
+Invincible: Modern Family,21,Invincible #115-120,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-4868628.jpg?1778285642
+Invincible: Reboot?,22,Invincible #121-126,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-6894914.jpg?1778285718
+Invincible: Full House,23,Invincible #127-132,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-6871793.jpg?1778285770
+Invincible: The End of All Things Part 1,24,Invincible #133-138,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-2898641.jpg?1778285809
+Invincible: The End of All Things Part 2,25,Invincible #139-144,Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9708378.jpg?1778285843
+Invincible Universe: Battle Beast: Heart of Glory,1,"Battle Beast #1-6, Skybound X #25",Image,Robert Kirkman,,Ryan Ottley,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7872446.jpg?1756727906
+Iron Man: Extremis,,Iron Man #1-6,Marvel,Warren Ellis,,Adi Grandov,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-7504083.jpg?1716393867
+"Invincible Iron Man, The: The Five Nightmares",,Invincible Iron Man #1-7,Marvel,Matt Fraction,,Salvador Larroca,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-2906078.jpg?1779147348
+Iron West,,,Image,Doug Tennapel,,Doug Tennapel,,https://s3.amazonaws.com/comicgeeks/comics/covers/large-9434676.jpg?1745715923
+JLA: Tower of Babel,7,"JLA #42-46, JLA Secret Files 3, JLA 80 Page Giant 1 ",DC,Mark Waid,Dan Curtis Johnson,Howard Porter,Drew Geraci,https://s3.amazonaws.com/comicgeeks/comics/covers/large-8228734.jpg?1740056295
+King in Black,,King In Black #1-5,Marvel,Donny Cates,Ryan Stegman,JP Mayer,Frank Martin,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1623118010i/56755936.jpg
+Kingdom Come,,Kingdom Come #1-4,DC,Mark Waid,,Alex Ross,,https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1385175050i/16992.jpg
 "League of Extraordinary Gentlemen, The",1,,America's Best Comics,,,,,
 "League of Extraordinary Gentlemen, The",2,,America's Best Comics,,,,,
 "League of Extraordinary Gentlemen, The – Century: 1910",,,Top Shelf,,,,,
@@ -538,3 +537,4 @@ zz Dick Tracy: Book Two,2,,WD Publications,,,,,
 "zz Exterminators, The: Insurgency",2,,Vertigo,,,,,
 "zz Exterminators, The: Lies of Our Fathers",3,,Vertigo,,,,,
 "zz Exterminators, The: Crossfire & Collateral",4,,Vertigo,,,,,
+"zz Hobbit, The",,,Del Ray,,,,,
